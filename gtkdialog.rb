@@ -22,7 +22,9 @@ class Gtkdialog < Formula
 
   # Update patch to compile gtkdialog on macOS
   # See: http://www.murga-linux.com/puppy/viewtopic.php?t=108945
-  patch :DATA
+  if RUBY_PLATFORM.include?("darwin")
+    patch :DATA
+  end
 
   def install
     system "./configure"
